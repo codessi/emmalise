@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+
+{%- if section.settings.menu_type_desktop == 'mega' -%}
+  <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<style>
+  .section-menu {
+    position: relative;
+  }
+
+  .section-menu .menu-content {
+    display: flex;
+    align-items: center;
+    min-height: 4.8rem;
+  }
+
+  .section-menu header-drawer {
+    justify-self: start;
+    margin-left: -1.2rem;
+  }
+
+  .section-menu .menu-drawer-container {
+    display: flex;
+  }
+
+  .section-menu .list-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-menu .list-menu--inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  .section-menu summary.list-menu__item {
+    padding-right: 2.7rem;
+  }
+
+  .section-menu .list-menu__item {
+    display: flex;
+    align-items: center;
+    line-height: calc(1 + 0.3 / var(--font-body-scale));
+  }
+
+  .section-menu .list-menu__item--link {
+    text-decoration: none;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    line-height: calc(1 + 0.8 / var(--font-body-scale));
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-menu .list-menu__item--link {
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    {%- unless section.settings.menu_type_desktop == 'drawer' -%}
+      .section-menu header-drawer {
+        display: none;
+      }
+    {%- endunless -%}
+  }
+</style>
+
+{%- if section.settings.menu != blank -%}
+  <div class="menu-wrapper border-red-400 border-4 flex justify-center color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+    <div class="menu-content  page-width">
+      {%- render 'header-drawer' -%}
+
+      {%- if section.settings.menu_type_desktop == 'dropdown' -%}
+        {%- render 'header-dropdown-menu' -%}
+      {%- elsif section.settings.menu_type_desktop == 'mega' -%}
+        {%- render 'header-mega-menu' -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Menu",
+  "class": "section-menu",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
+      "type": "select",
+      "id": "menu_type_desktop",
+      "options": [
+        {
+          "value": "dropdown",
+          "label": "Dropdown"
+        },
+        {
+          "value": "mega",
+          "label": "Mega menu"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "dropdown",
+      "label": "Desktop menu type"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_color_scheme",
+      "label": "Menu popup color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": false,
+      "label": "Show line separator"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Menu"
+    }
+  ]
+}
+{% endschema %}

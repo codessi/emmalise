@@ -53,7 +53,13 @@
     },
     "menu": {
       "type": "menu",
-      "settings": {}
+      "settings": {
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "show_line_separator": false
+      }
     }
   },
   "order": [
