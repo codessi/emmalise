@@ -12,6 +12,37 @@
   if section.blocks.size > 0
     assign announcement_bar = true
   endif
+  assign use_three_col = false
+  if announcement_bar and language_country_selector
+    assign use_three_col = true
+  endif
+  if section.settings.show_social and social_icons
+    assign use_three_col = true
+  endif
+
+  assign use_two_col = false
+  unless use_three_col
+    if language_country_selector
+      assign use_two_col = true
+    endif
+    if section.settings.show_social and social_icons
+      assign use_two_col = true
+    endif
+  endunless
+
+  assign border_classes = ''
+  if section.settings.show_line_separator and section.blocks.size > 0
+    assign border_classes = 'border-b border-[rgba(var(--color-foreground),0.08)]'
+  elsif section.settings.show_line_separator and section.settings.show_social and social_icons
+    assign border_classes = 'lg:border-b lg:border-[rgba(var(--color-foreground),0.08)]'
+  endif
+
+  assign grid_cols = 'grid-cols-1'
+  if use_three_col
+    assign grid_cols = 'grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(0,4fr)_minmax(0,3fr)]'
+  elsif use_two_col
+    assign grid_cols = 'grid-cols-1 lg:grid-cols-2'
+  endif
 -%}
 
 {% if social_icons %}
@@ -19,15 +50,23 @@
 {% endif %}
 
 <div
-  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
+  class="utility-bar h-30 color-{{ section.settings.color_scheme }} gradient relative block h-full w-full
+    {%- if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}
+    {{- border_classes -}}
+  "
 >
-  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+  <div class="page-width grid w-full items-center gap-x-4 gap-y-3 {{ grid_cols }}">
     {%- if section.settings.show_social and social_icons -%}
-      {%- render 'social-icons' -%}
+      <div class="max-[989px]:hidden lg:ml-[-1.2rem] [&_.list-social]:justify-start [&_.list-social]:content-center">
+        {%- render 'social-icons' -%}
+      </div>
     {%- endif -%}
+
     {%- if section.blocks.size == 1 -%}
       <div
-        class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
+        class="announcement-bar flex h-full w-full flex-wrap content-center justify-center text-[rgb(var(--color-foreground))]
+          {%- if section.settings.show_social %} announcement-bar--one-announcement lg:mx-auto lg:w-fit{% endif -%}
+        "
         role="region"
         aria-label="{{ 'sections.header.announcement' | t }}"
         {{ section.blocks.first.shopify_attributes }}
@@ -36,10 +75,12 @@
           {%- if section.blocks.first.settings.link != blank -%}
             <a
               href="{{ section.blocks.first.settings.link }}"
-              class="announcement-bar__link link link--text focus-inset animate-arrow"
+              class="announcement-bar__link animate-arrow link link--text focus-inset flex h-full w-full items-center justify-center no-underline hover:underline"
             >
           {%- endif -%}
-          <p class="announcement-bar__message h5">
+          <p
+            class="announcement-bar__message h5 m-0 min-h-[3.8rem] px-2 py-4 text-center tracking-wide text-[rgb(var(--color-foreground))]"
+          >
             <span>{{ section.blocks.first.settings.text | escape }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -52,12 +93,14 @@
       </div>
     {%- elsif section.blocks.size > 1 -%}
       <slideshow-component
-        class="announcement-bar"
+        class="announcement-bar flex h-full w-full flex-wrap content-center justify-center text-[rgb(var(--color-foreground))]"
         role="region"
         aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
         aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
       >
-        <div class="announcement-bar-slider slider-buttons">
+        <div
+          class="announcement-bar-slider slider-buttons flex w-full max-w-full items-center lg:w-3/5 lg:max-w-none lg:mx-auto"
+        >
           <button
             type="button"
             class="slider-button slider-button--prev"
@@ -70,7 +113,7 @@
             </span>
           </button>
           <div
-            class="grid grid--1-col slider slider--everywhere"
+            class="grid grid--1-col slider slider--everywhere min-w-0 flex-1 scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             id="Slider-{{ section.id }}"
             aria-live="polite"
             aria-atomic="true"
@@ -88,7 +131,7 @@
                 tabindex="-1"
               >
                 <div
-                  class="announcement-bar__announcement"
+                  class="announcement-bar__announcement flex h-full w-full flex-wrap content-center justify-center"
                   role="region"
                   aria-label="{{ 'sections.header.announcement' | t }}"
                 >
@@ -96,10 +139,12 @@
                     {%- if block.settings.link != blank -%}
                       <a
                         href="{{ block.settings.link }}"
-                        class="announcement-bar__link link link--text focus-inset animate-arrow"
+                        class="announcement-bar__link animate-arrow link link--text focus-inset flex h-full w-full items-center justify-center no-underline hover:underline"
                       >
                     {%- endif -%}
-                    <p class="announcement-bar__message h5">
+                    <p
+                      class="announcement-bar__message h5 m-0 min-h-[3.8rem] px-2 py-4 text-center tracking-wide text-[rgb(var(--color-foreground))]"
+                    >
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -129,14 +174,14 @@
       {%- if request.design_mode -%}
         <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
         <style>
-          /* theme editor power preview fix */
           .announcement-bar-slider .slider__slide[aria-hidden='true'] {
             visibility: hidden;
           }
         </style>
       {%- endif -%}
     {%- endif -%}
-    <div class="localization-wrapper">
+
+    <div class="localization-wrapper flex flex-wrap items-center justify-end gap-2 self-center text-[rgb(var(--color-foreground))]">
       {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
         <localization-form class="small-hide medium-hide">
           {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
@@ -186,13 +231,13 @@
       "unit": "s",
       "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
       "default": 5
-    },    
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-4"
-    },  
+    },
     {
       "type": "checkbox",
       "id": "show_line_separator",
@@ -205,8 +250,8 @@
     },
     {
       "type": "paragraph",
-         "content": "t:sections.announcement-bar.settings.paragraph.content"
-    },             
+      "content": "t:sections.announcement-bar.settings.paragraph.content"
+    },
     {
       "type": "checkbox",
       "id": "show_social",

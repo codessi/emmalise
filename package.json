@@ -1,0 +1,24 @@
+{
+  "name": "emmalise",
+  "version": "1.0.0",
+  "scripts": {
+    "tailwind:build": "tailwindcss -i ./assets/tailwind.css -o ./assets/tailwind-output.css --minify",
+    "watch:css": "tailwindcss -i ./assets/tailwind.css -o ./assets/tailwind-output.css --watch",
+    "dev": "npm run watch:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codessi/emmalise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codessi/emmalise/issues"
+  },
+  "homepage": "https://github.com/codessi/emmalise#readme",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^4.2.4"
+  }
+}

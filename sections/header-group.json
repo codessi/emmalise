@@ -40,12 +40,9 @@
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
-        "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
         "enable_country_selector": true,
         "enable_language_selector": true,
         "enable_customer_avatar": true,
@@ -53,10 +50,21 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "menu": {
+      "type": "menu",
+      "settings": {
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "show_line_separator": false
+      }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header",
+    "menu",
+    "announcement-bar"
   ]
 }
