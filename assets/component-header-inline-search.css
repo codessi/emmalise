@@ -1,0 +1,129 @@
+/* Always-visible header search — capped width (center band), not full gap between logo & icons */
+.header__column--search {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__search--inline {
+  display: flex;
+  width: 100%;
+  max-width: min(100%, 22rem);
+  flex: 0 1 auto;
+  min-width: 0;
+  line-height: normal;
+}
+
+@media screen and (min-width: 400px) {
+  .header__search--inline {
+    max-width: min(100%, 26rem);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .header__search--inline {
+    max-width: min(100%, 30rem);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .header__search--inline {
+    max-width: min(100%, 34rem);
+  }
+   /* .header__search--inline { 
+    border: red 1px solid;
+    width: 30rem */
+}
+
+.header__search--inline predictive-search,
+.header__search--inline search-form {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  position: relative;
+}
+
+.header-inline-search__form {
+  width: 100%;
+}
+
+.header-inline-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0.6rem 9rem 0.6rem 0.2rem;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.header-inline-search__input::placeholder {
+  color: rgba(var(--color-foreground), 0.45);
+  text-transform: uppercase;
+}
+
+.header-inline-search__input:focus {
+  outline: none;
+}
+
+.header-inline-search__actions {
+  position: absolute;
+  right: 0;
+  bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.header-inline-search__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.6rem;
+  min-height: 3.6rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.header-inline-search__actions button:hover .svg-wrapper svg {
+  transform: scale(1.07);
+}
+
+.header-inline-search__actions .svg-wrapper svg {
+  width: 2rem;
+  height: 2rem;
+  transition: transform var(--duration-short) ease;
+}
+
+.header-inline-search__actions .reset__button.hidden {
+  display: none;
+}
+
+.header-inline-search__actions .reset__button:not(:focus-visible)::after,
+.header-inline-search__actions .reset__button:not(:focus)::after {
+  display: none;
+}
+
+/* Predictive dropdown anchors to this search */
+.header__search--inline .predictive-search {
+  left: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .header-inline-search__input {
+    font-size: 1.3rem;
+    padding-right: 8.5rem;
+  }
+}

@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link
   rel="stylesheet"
+  href="{{ 'component-header-inline-search.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+<link
+  rel="stylesheet"
   href="{{ 'component-cart-notification.css' | asset_url }}"
   media="print"
   onload="this.media='all'"
@@ -23,10 +29,6 @@
   assign pb_half = section.settings.padding_bottom | times: 0.5 | round: 0
   assign lp = section.settings.logo_position
   assign mp = section.settings.mobile_logo_position
-  assign three_col = false
-  if lp == 'middle-center' or lp == 'top-center'
-    assign three_col = true
-  endif
 -%}
 
 {%- style -%}
@@ -90,117 +92,60 @@
   -%}
 
   <header
-    class="header h-34 header-storefront page-width flex! w-full items-center gap-3
+    class="header header-storefront page-width flex! w-full items-center justify-between gap-4 md:gap-6
       {%- if has_app_block %} header--has-app{% endif -%}
       {%- if social_links %} header--has-social{% endif -%}
       {%- if shop.customer_accounts_enabled %} header--has-account{% endif -%}
       {%- if localization_forms %} header--has-localizations{% endif -%}
-      {%- if three_col -%}
-        max-md:flex-col max-md:items-stretch sm:flex-row sm:justify-between md:items-center md:gap-6
-      {%- else -%}
-        justify-between md:gap-6
-      {%- endif -%}
-      {%- if lp == 'middle-center' -%}
-        md:grid! md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-4
-      {%- endif -%}
-      {%- if mp == 'left' -%}
-        max-md:items-start
-      {%- endif -%}
+      {%- if mp == 'left' %} max-md:items-start{% endif -%}
     "
   >
-    {%- if three_col -%}
-      <div class="flex w-full min-w-0 flex-1 items-center justify-start gap-2 sm:w-auto md:min-w-0">
-        {%- if lp == 'top-center' -%}
-          {%- render 'header-search', input_id: 'Search-In-Modal-1' -%}
-        {%- endif -%}
-        {%- if lp == 'middle-center' -%}
-          {%- render 'header-search', input_id: 'Search-In-Modal' -%}
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
-    <div
-      class="flex min-w-0 shrink-0 items-center
-        {%- if three_col -%}
-          justify-center max-md:w-full md:col-start-2 md:justify-self-center
-        {%- endif -%}
-        {%- if mp == 'left' -%}
-          max-md:self-start max-md:justify-start
-        {%- endif -%}
-      "
-    >
-      {%- if lp != 'middle-center' -%}
-        {%- if request.page_type == 'index' -%}
-          <h1 class="header__heading m-0 leading-none">
-        {%- endif -%}
-        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset inline-block wrap-break-word p-3 no-underline leading-none">
-          {%- if settings.logo != blank -%}
-            <div class="header__heading-logo-wrapper inline-block w-full transition-[width] duration-300 ease-[cubic-bezier(0.52,0,0.61,0.99)]">
-              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-              {{
-                settings.logo
-                | image_url: width: 600
-                | image_tag:
-                  class: 'header__heading-logo motion-reduce h-auto max-w-full',
-                  widths: widths,
-                  height: logo_height,
-                  width: settings.logo_width,
-                  alt: logo_alt,
-                  sizes: sizes,
-                  preload: true
-              }}
-            </div>
-          {%- else -%}
-            <span class="h2 leading-none text-[rgba(var(--color-foreground),0.75)]">{{ shop.name }}</span>
-          {%- endif -%}
-        </a>
-        {%- if request.page_type == 'index' -%}
-          </h1>
-        {%- endif -%}
+    <div class="header__column header__column--logo flex shrink-0 items-center{% if mp == 'left' %} max-md:self-start{% endif %}">
+      {%- if request.page_type == 'index' -%}
+        <h1 class="header__heading m-0 leading-none">
       {%- endif -%}
-
-      {%- if lp == 'middle-center' -%}
-        {%- if request.page_type == 'index' -%}
-          <h1 class="header__heading m-0 leading-none">
-        {%- endif -%}
-        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset inline-block wrap-break-word p-3 no-underline leading-none">
-          {%- if settings.logo != blank -%}
-            <div class="header__heading-logo-wrapper inline-block w-full transition-[width] duration-300 ease-[cubic-bezier(0.52,0,0.61,0.99)]">
-              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+      <a
+        href="{{ routes.root_url }}"
+        class="header__heading-link link link--text focus-inset inline-block wrap-break-word p-3 no-underline leading-none"
+      >
+        {%- if settings.logo != blank -%}
+          <div class="header__heading-logo-wrapper inline-block w-full transition-[width] duration-300 ease-[cubic-bezier(0.52,0,0.61,0.99)]">
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {%- if lp == 'middle-center' -%}
               {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-              {{
-                settings.logo
-                | image_url: width: 600
-                | image_tag:
-                  class: 'header__heading-logo h-auto max-w-full',
-                  widths: widths,
-                  height: logo_height,
-                  width: settings.logo_width,
-                  alt: logo_alt,
-                  sizes: sizes,
-                  preload: true
-              }}
-            </div>
-          {%- else -%}
-            <span class="h2 leading-none text-[rgba(var(--color-foreground),0.75)]">{{ shop.name }}</span>
-          {%- endif -%}
-        </a>
-        {%- if request.page_type == 'index' -%}
-          </h1>
+            {%- else -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+            {%- endif -%}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {{
+              settings.logo
+              | image_url: width: 600
+              | image_tag:
+                class: 'header__heading-logo motion-reduce h-auto max-w-full',
+                widths: widths,
+                height: logo_height,
+                width: settings.logo_width,
+                alt: logo_alt,
+                sizes: sizes,
+                preload: true
+            }}
+          </div>
+        {%- else -%}
+          <span class="h2 leading-none text-[rgba(var(--color-foreground),0.75)]">{{ shop.name }}</span>
         {%- endif -%}
+      </a>
+      {%- if request.page_type == 'index' -%}
+        </h1>
       {%- endif -%}
     </div>
 
+    <div class="header__column header__column--search min-w-0 flex-1 px-2 md:px-4">
+      {%- render 'header-search', input_id: 'HeaderSearch' -%}
+    </div>
+
     <div
-      class="header__icons header-localization flex w-full min-w-0 items-center justify-end gap-1 pr-2 sm:w-auto sm:flex-1 md:pr-2
-        {%- if three_col -%}
-          md:col-start-3 md:w-auto md:justify-end
-        {%- endif -%}
+      class="header__icons header-localization flex shrink-0 items-center justify-end gap-1 pr-2 md:pr-2
         {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
           header__icons--localization
         {%- endif -%}
@@ -229,10 +174,6 @@
           </localization-form>
         {%- endif -%}
       </div>
-
-      {%- unless lp == 'middle-center' -%}
-        {%- render 'header-search', input_id: 'Search-In-Modal' -%}
-      {%- endunless -%}
 
       {%- if shop.customer_accounts_enabled -%}
         <a
