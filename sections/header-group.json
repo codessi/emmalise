@@ -30,7 +30,7 @@
     "menu": {
       "type": "menu",
       "settings": {
-        "menu": "main-menu",
+        "menu": "shopping-menu",
         "menu_type_desktop": "mega",
         "color_scheme": "scheme-2",
         "menu_color_scheme": "scheme-1",

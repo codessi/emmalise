@@ -11,9 +11,10 @@
   }
 
   .section-menu .menu-content {
+    --section-menu-bar-height: 4.8rem;
     display: flex;
-    align-items: center;
-    min-height: 4.8rem;
+    align-items: stretch;
+    min-height: var(--section-menu-bar-height);
   }
 
   .section-menu header-drawer {
@@ -32,18 +33,82 @@
   }
 
   .section-menu .list-menu--inline {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
+    min-height: var(--section-menu-bar-height);
+  }
+
+  .section-menu .header__inline-menu {
+    display: flex;
+    align-items: stretch;
+    min-height: var(--section-menu-bar-height);
+  }
+
+  .section-menu .header__inline-menu > .list-menu--inline > li {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .section-menu .header__inline-menu > .list-menu--inline > li > header-menu {
+    display: flex;
+    align-items: stretch;
+    min-height: var(--section-menu-bar-height);
+    box-sizing: border-box;
+  }
+
+  .section-menu .header__inline-menu > .list-menu--inline > li > header-menu > details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: var(--section-menu-bar-height);
+    box-sizing: border-box;
+  }
+
+  .section-menu .header__inline-menu > .list-menu--inline > li > header-menu summary.header__menu-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: var(--section-menu-bar-height);
   }
 
   .section-menu summary.list-menu__item {
-    padding-right: 2.7rem;
+    padding-right: 1.2rem;
+  }
+
+  .section-menu .header__inline-menu .header__menu-item:hover,
+  .section-menu .header__inline-menu summary.header__menu-item:hover {
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+  }
+
+  .section-menu .header__inline-menu .header__menu-item:hover span,
+  .section-menu .header__inline-menu summary.header__menu-item:hover span {
+    color: #000;
+  }
+
+  .section-menu .header__inline-menu details[open] > summary.header__menu-item:hover {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .section-menu .header__inline-menu details[open] > summary.header__menu-item:hover span {
+    color: #000;
   }
 
   .section-menu .list-menu__item {
     display: flex;
     align-items: center;
     line-height: calc(1 + 0.3 / var(--font-body-scale));
+  }
+
+  .section-menu .header__inline-menu > .list-menu--inline > li > a.header__menu-item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: var(--section-menu-bar-height);
   }
 
   .section-menu .list-menu__item--link {

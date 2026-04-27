@@ -85,3 +85,13 @@
 .mega-menu__list--condensed .mega-menu__link {
   font-weight: normal;
 }
+
+/* Menu section is outside `.header-wrapper`; `.global-settings-popup` uses z-index: -1,
+   which worked inside the header stacking context but hides the panel behind #MainContent here. */
+.shopify-section.section-menu {
+  z-index: 2;
+}
+
+.section-menu .mega-menu__content.global-settings-popup {
+  z-index: 4;
+}

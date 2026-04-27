@@ -348,7 +348,12 @@
     }
 
     closeMenuDisclosure() {
-      this.disclosures = this.disclosures || this.header.querySelectorAll('header-menu');
+      if (!this.disclosures) {
+        const group = this.header?.closest?.('.shopify-section-group-header-group');
+        this.disclosures = group
+          ? group.querySelectorAll('header-menu')
+          : document.querySelectorAll('.section-header header-menu, .section-menu header-menu');
+      }
       this.disclosures.forEach((disclosure) => disclosure.close());
     }
 
