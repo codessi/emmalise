@@ -57,6 +57,23 @@
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
+<style>
+  .shopify-section.announcement-bar-section {
+    position: relative;
+    top: 0;
+    z-index: 39;
+  }
+
+  .menu-announcement-fixed-active .shopify-section.announcement-bar-section {
+    position: fixed;
+    top: 4.8rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 39;
+  }
+</style>
+
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient relative block w-full
     {%- if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}
