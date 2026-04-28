@@ -92,7 +92,7 @@
   -%}
 
   <header
-    class="header header-storefront page-width flex! w-full items-center justify-between gap-4 md:gap-6
+    class="header header-storefront overflow-hidden h-36  page-width flex! w-full items-center justify-between gap-4 md:gap-6
       {%- if has_app_block %} header--has-app{% endif -%}
       {%- if social_links %} header--has-social{% endif -%}
       {%- if shop.customer_accounts_enabled %} header--has-account{% endif -%}
@@ -100,7 +100,7 @@
       {%- if mp == 'left' %} max-md:items-start{% endif -%}
     "
   >
-    <div class="header__column header__column--logo flex shrink-0 items-center{% if mp == 'left' %} max-md:self-start{% endif %}">
+    <div class="header__column header__column--logo  flex shrink-0 items-center{% if mp == 'left' %} max-md:self-start{% endif %}">
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading m-0 leading-none">
       {%- endif -%}
