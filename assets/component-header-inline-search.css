@@ -30,7 +30,7 @@
 
 @media screen and (min-width: 990px) {
   .header__search--inline {
-    max-width: min(100%, 34rem);
+    max-width: min(100%, 54rem);
   }
    /* .header__search--inline { 
     border: red 1px solid;
@@ -63,6 +63,16 @@
   box-shadow: none;
   appearance: none;
   -webkit-appearance: none;
+}
+
+/* Hide browser-native search clear controls to avoid duplicate reset icons. */
+.header-inline-search__input::-webkit-search-cancel-button,
+.header-inline-search__input::-webkit-search-decoration,
+.header-inline-search__input::-webkit-search-results-button,
+.header-inline-search__input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
 }
 
 .header-inline-search__input::placeholder {
