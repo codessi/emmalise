@@ -16,7 +16,7 @@
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
-        "sticky_header_type": "on-scroll-up",
+        "sticky_header_type": "none",
         "show_line_separator": true,
         "color_scheme": "scheme-1",
         "enable_country_selector": true,
