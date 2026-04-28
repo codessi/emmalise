@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "<strong>Browse our latest products</strong>",
             "heading_size": "h0"
           }
         },
@@ -36,49 +36,114 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/fashion-portrait.jpg",
+        "image_2": "shopify://shop_images/fashion-model-in-pink.jpg",
         "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
+        "image_height": "medium",
         "image_behavior": "none",
+        "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-b435427b-7c3d-4726-94f7-5cdf5de5ebf1",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "blocks_9FrJmR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_dde7930_hXbQLm": {
+          "type": "ai_gen_block_dde7930",
+          "settings": {
+            "announcement_text": "<p>Welcome to our store! Free shipping on orders over $50.</p>",
+            "show_icon": true,
+            "icon_type": "megaphone",
+            "icon_size": 20,
+            "show_close_button": true,
+            "text_alignment": "center",
+            "max_width": 1200,
+            "padding_vertical": 12,
+            "padding_horizontal": 20,
+            "font_size": 14,
+            "background_color": "#560503",
+            "text_color": "#fffdf7",
+            "link_color": "#fffdf7",
+            "link_hover_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_dde7930_hXbQLm"
+      ],
+      "name": "Announcement bar",
+      "settings": {}
+    },
+    "image_banner_X4d9tF": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PVeEnR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_qNMzUV": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_PVeEnR",
+        "buttons_qNMzUV"
+      ],
+      "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "title": "Featured products",
+        "image": "shopify://shop_images/stylish-summer-necklace.jpg",
+        "image_2": "shopify://shop_images/pink-summer-outfit.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "video_amtdTr": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
         "heading_size": "h2",
+        "enable_video_looping": true,
+        "video": "shopify://files/videos/Screen Recording 2026-04-28 at 3.59.30 PM.mov",
+        "video_url": "https://youtu.be/MbrE3VIfSsM?si=55ZhcaiHxj5Zaagd",
         "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "blocks_9FrJmR",
+    "image_banner_X4d9tF",
+    "video_amtdTr"
   ]
 }
