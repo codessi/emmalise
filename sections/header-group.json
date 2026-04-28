@@ -34,6 +34,7 @@
         "menu_type_desktop": "mega",
         "color_scheme": "scheme-2",
         "menu_color_scheme": "scheme-1",
+        "menu_item_gap": 2.6,
         "show_line_separator": false
       }
     },
