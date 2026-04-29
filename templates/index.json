@@ -38,7 +38,7 @@
       "settings": {
         "image": "shopify://shop_images/fashion-portrait.jpg",
         "image_2": "shopify://shop_images/fashion-model-in-pink.jpg",
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 30,
         "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
@@ -86,8 +86,8 @@
         "heading_PVeEnR": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
+            "heading": "<strong>P. I. N. K.  </strong>",
+            "heading_size": "hxxl"
           }
         },
         "buttons_qNMzUV": {
@@ -111,7 +111,7 @@
       "settings": {
         "image": "shopify://shop_images/stylish-summer-necklace.jpg",
         "image_2": "shopify://shop_images/pink-summer-outfit.jpg",
-        "image_overlay_opacity": 50,
+        "image_overlay_opacity": 30,
         "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
@@ -138,12 +138,258 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "featured_collection_GC7YkQ": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "camisole",
+        "products_to_show": 4,
+        "title": "Now, Defined.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_j7YgdR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mJAemV": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Curation for the </em><em><strong>Conscious Chic</strong></em><em>.</em>",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mJAemV"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-562df40a-5aed-4062-a865-e83b1dfcc352",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner_NNXUcj": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_qYK6Q6": {
+          "type": "heading",
+          "settings": {
+            "heading": "F L O R A L",
+            "heading_size": "hxxl"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qYK6Q6"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/woman-in-summer-floral-fashion.jpg",
+        "image_2": "shopify://shop_images/minimalist-retail-clothing-display.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-b435427b-7c3d-4726-94f7-5cdf5de5ebf1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "image_banner_gJWnh7": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_VUKqU3": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>SUMMER FUN</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_tkidY7": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VUKqU3",
+        "text_tkidY7"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/laughter-in-the-sun.jpg",
+        "image_2": "shopify://shop_images/white-dress-and-tattoo.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-b435427b-7c3d-4726-94f7-5cdf5de5ebf1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "collage_yPNWDD": {
+      "type": "collage",
+      "blocks": {
+        "image_caLr9N": {
+          "type": "image",
+          "settings": {}
+        },
+        "product_gU7gDe": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "second_image": false
+          }
+        },
+        "collection_7Aq6Lb": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_caLr9N",
+        "product_gU7gDe",
+        "collection_7Aq6Lb"
+      ],
+      "name": "t:sections.collage.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "desktop_layout": "right",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "collection_list_Y4iFfB": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_GFQMFF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_PMxmVd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_iyqREz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_DznJyb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_GFQMFF",
+        "featured_collection_PMxmVd",
+        "featured_collection_iyqREz",
+        "featured_collection_DznJyb"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_ratio": "portrait",
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_aLFbzH": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fn6G6z": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT US",
+            "heading_size": "h1"
+          }
+        },
+        "text_Ey6dQg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover the story behind Emmalise. We're dedicated to bringing you thoughtfully curated products that inspire confidence and elevate your everyday. From our carefully selected collections to our commitment to quality, every detail reflects our passion for excellence. Whether you're exploring something new or returning to a favorite, we're here to make your shopping experience meaningful and memorable.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fn6G6z",
+        "text_Ey6dQg"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "image_banner",
     "blocks_9FrJmR",
     "image_banner_X4d9tF",
-    "video_amtdTr"
+    "video_amtdTr",
+    "featured_collection_GC7YkQ",
+    "rich_text_j7YgdR",
+    "image_banner_NNXUcj",
+    "image_banner_gJWnh7",
+    "collage_yPNWDD",
+    "collection_list_Y4iFfB",
+    "rich_text_aLFbzH"
   ]
 }

@@ -131,6 +131,22 @@
   right: 0;
 }
 
+@media screen and (min-width: 991px) {
+  /* Keep header search results above fixed menu/announcement bars. */
+  .section-header.shopify-section-group-header-group {
+    z-index: 41;
+  }
+
+  .header__search--inline predictive-search {
+    position: relative;
+    z-index: 60;
+  }
+
+  .header__search--inline .predictive-search {
+    z-index: 61;
+  }
+}
+
 @media screen and (max-width: 749px) {
   .header-inline-search__input {
     font-size: 1.3rem;

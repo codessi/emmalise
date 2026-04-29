@@ -84,6 +84,26 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.parentElement.addEventListener('keyup', onKeyUpEscape);
 });
 
+// Desktop-only: when a top-level header menu is already open (via hover),
+// clicking its summary should follow the parent link URL.
+document.addEventListener('click', (event) => {
+  if (window.innerWidth <= 990) return;
+
+  const summary = event.target.closest(
+    '.header__inline-menu > .list-menu > li > header-menu > details > summary[data-menu-url]'
+  );
+  if (!summary) return;
+
+  const details = summary.closest('details');
+  if (!details?.hasAttribute('open')) return;
+
+  const targetUrl = summary.dataset.menuUrl;
+  if (!targetUrl) return;
+
+  event.preventDefault();
+  window.location.assign(targetUrl);
+});
+
 const trapFocusHandlers = {};
 
 function trapFocus(container, elementToFocus = container) {
