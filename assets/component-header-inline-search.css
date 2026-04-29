@@ -134,6 +134,12 @@
 @media screen and (min-width: 991px) {
   /* Keep header search results above fixed menu/announcement bars. */
   .section-header.shopify-section-group-header-group {
+    position: relative;
+    z-index: 41;
+  }
+
+  .section-header.shopify-section-group-header-group .header-wrapper {
+    position: relative;
     z-index: 41;
   }
 
