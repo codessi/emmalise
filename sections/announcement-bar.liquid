@@ -58,12 +58,75 @@
 {% endif %}
 
 <style>
+  .announcement-bar-fixed-enabled.announcement-bar-fixed-active .shopify-section-group-header-group {
+    padding-top: var(--announcement-bar-height, 0px);
+  }
+
   .shopify-section.announcement-bar-section {
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 39;
   }
+
+  .announcement-bar-fixed-enabled.announcement-bar-fixed-active .shopify-section.announcement-bar-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+    z-index: 39;
+  }
+
+  .announcement-bar-fixed-enabled.announcement-bar-fixed-active .shopify-section.announcement-bar-section .utility-bar {
+    margin-top: 0;
+    padding-top: 0;
+  }
 </style>
+
+<script>
+  (() => {
+    if (window.__announcementBarFixedInit) return;
+
+    const init = () => {
+      const root = document.documentElement;
+      const headerSection = document.querySelector('.shopify-section.section-header');
+      const announcementSection = document.querySelector('.shopify-section.announcement-bar-section');
+      if (!announcementSection || !headerSection) return false;
+
+      const updateHeight = () => {
+        root.style.setProperty('--announcement-bar-height', `${announcementSection.offsetHeight}px`);
+      };
+
+      const updateFixedState = () => {
+        const headerBottom = headerSection.getBoundingClientRect().bottom;
+        if (headerBottom <= 0) {
+          root.classList.add('announcement-bar-fixed-active');
+        } else {
+          root.classList.remove('announcement-bar-fixed-active');
+        }
+      };
+
+      root.classList.add('announcement-bar-fixed-enabled');
+      updateHeight();
+      updateFixedState();
+
+      window.addEventListener('resize', updateHeight);
+      window.addEventListener('scroll', updateFixedState, { passive: true });
+      window.__announcementBarFixedInit = true;
+      return true;
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        if (!init()) window.requestAnimationFrame(init);
+      });
+    } else if (!init()) {
+      window.requestAnimationFrame(init);
+    }
+  })();
+</script>
 
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient relative block w-full
