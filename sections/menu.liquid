@@ -15,18 +15,6 @@
     z-index: 40;
   }
 
-  .menu-announcement-fixed-active .shopify-section.section-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-
-  .menu-announcement-fixed-active #MainContent {
-    padding-top: var(--menu-announcement-offset, 0px);
-  }
-
   .section-menu .menu-content {
     --section-menu-bar-height: 4.8rem;
     --section-menu-item-gap: {{ section.settings.menu_item_gap }}rem;
@@ -166,53 +154,6 @@
     </div>
   </div>
 {%- endif -%}
-
-<script>
-  (() => {
-    if (window.__menuAnnouncementFixedInit) return;
-
-    const init = () => {
-      const root = document.documentElement;
-      const headerSection = document.querySelector('.shopify-section.section-header');
-      const menuSection = document.querySelector('.shopify-section.section-menu');
-      const announcementSection = document.querySelector('.shopify-section.announcement-bar-section');
-
-      if (!headerSection || !menuSection || !announcementSection) return false;
-
-      const updateOffset = () => {
-        const offset = menuSection.offsetHeight + announcementSection.offsetHeight;
-        root.style.setProperty('--menu-announcement-offset', `${offset}px`);
-      };
-
-      const updateFixedState = () => {
-        const headerBottom = headerSection.getBoundingClientRect().bottom;
-        if (headerBottom <= 0) {
-          root.classList.add('menu-announcement-fixed-active');
-        } else {
-          root.classList.remove('menu-announcement-fixed-active');
-        }
-      };
-
-      updateOffset();
-      updateFixedState();
-
-      window.addEventListener('resize', updateOffset);
-      window.addEventListener('scroll', updateFixedState, { passive: true });
-      window.__menuAnnouncementFixedInit = true;
-      return true;
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        if (!init()) {
-          window.requestAnimationFrame(init);
-        }
-      });
-    } else if (!init()) {
-      window.requestAnimationFrame(init);
-    }
-  })();
-</script>
 
 {% schema %}
 {
