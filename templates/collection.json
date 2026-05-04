@@ -28,7 +28,7 @@
         "product_card_image_fit": "contain",
         "image_shape": "default",
         "product_card_background_color": "#ffffff",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
