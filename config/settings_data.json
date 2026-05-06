@@ -148,9 +148,9 @@
         "settings": {
           "background": "#fffdf7",
           "background_gradient": "",
-          "text": "#333333",
+          "text": "#fffdf7",
           "button": "#560503",
-          "button_label": "#fffdf7",
+          "button_label": "#000000",
           "secondary_button_label": "#faf5e8",
           "shadow": "#121212"
         }
