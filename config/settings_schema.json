@@ -1400,6 +1400,84 @@
     ]
   },
   {
+    "name": "Newsletter popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "newsletter_popup_enable",
+        "label": "Enable subscribe popup",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_eyebrow",
+        "label": "Eyebrow text",
+        "default": "Subscribe and Save"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_heading",
+        "label": "Heading",
+        "default": "Get 10% off your first order"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_popup_body",
+        "label": "Body text",
+        "default": "<p>Join our newsletter for product updates, launches, and exclusive offers.</p>"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_success_text",
+        "label": "Success message",
+        "default": "You're in. Here is your code:"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_discount_code",
+        "label": "Discount code",
+        "default": "WELCOME10"
+      },
+      {
+        "type": "range",
+        "id": "newsletter_popup_delay_seconds",
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "unit": "s",
+        "label": "Show after delay",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "newsletter_popup_scroll_percent",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Show at scroll depth",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "newsletter_popup_hide_days",
+        "min": 1,
+        "max": 90,
+        "step": 1,
+        "unit": "d",
+        "label": "Hide for days after close or submit",
+        "default": 30
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_storage_key",
+        "label": "Storage key",
+        "default": "newsletter-popup-hidden-until",
+        "info": "Change only if needed to reset popup behavior."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
