@@ -33,11 +33,7 @@
     <div class="newsletter-popup__form-wrapper" data-newsletter-popup-form-wrapper>
       {% form 'customer', class: 'newsletter-popup__form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
-        <input
-          type="hidden"
-          data-newsletter-popup-form-success
-          value="{{ form.posted_successfully? | json }}"
-        >
+        <input type="hidden" data-newsletter-popup-form-success value="{{ form.posted_successfully? | json }}">
         <div class="field newsletter-popup__field">
           <input
             id="NewsletterPopupEmail"
@@ -76,8 +72,9 @@
     </div>
 
     <div class="newsletter-popup__success newsletter-popup__success--hidden" data-newsletter-popup-success hidden>
-      <p class="newsletter-popup__success-title">{{ settings.newsletter_popup_success_text | escape }}</p>
-      <p class="newsletter-popup__code">{{ settings.newsletter_popup_discount_code | escape }}</p>
+      <p class="newsletter-popup__success-title">
+        Thanks! Your 10% discount code is {{ settings.newsletter_popup_discount_code | escape }}.
+      </p>
     </div>
   </div>
   </div>
@@ -168,13 +165,6 @@
 
   .newsletter-popup__success-title {
     margin: 0;
-  }
-
-  .newsletter-popup__code {
-    margin: 0.8rem 0 0;
-    font-size: 2.4rem;
-    letter-spacing: 0.15rem;
-    font-weight: 600;
   }
 
   @media screen and (max-width: 749px) {
