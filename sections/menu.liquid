@@ -17,7 +17,8 @@
 
   .section-menu .menu-content {
     --section-menu-bar-height: 4.8rem;
-    --section-menu-item-gap: {{ section.settings.menu_item_gap }}rem;
+    --section-menu-item-column-gap: {{ section.settings.menu_item_horizontal_gap }}rem;
+    --section-menu-item-row-gap: {{ section.settings.menu_item_vertical_gap }}rem;
     display: flex;
     align-items: stretch;
     min-height: var(--section-menu-bar-height);
@@ -41,7 +42,8 @@
   .section-menu .list-menu--inline {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--section-menu-item-gap);
+    column-gap: var(--section-menu-item-column-gap);
+    row-gap: var(--section-menu-item-row-gap);
     align-items: stretch;
     min-height: var(--section-menu-bar-height);
   }
@@ -200,12 +202,22 @@
     },
     {
       "type": "range",
-      "id": "menu_item_gap",
+      "id": "menu_item_horizontal_gap",
       "min": 0,
       "max": 4,
       "step": 0.1,
       "unit": "rem",
-      "label": "Menu item gap",
+      "label": "Menu item horizontal gap",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "menu_item_vertical_gap",
+      "min": 0,
+      "max": 4,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Menu item vertical gap",
       "default": 0
     },
     {

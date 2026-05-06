@@ -148,10 +148,10 @@
         "settings": {
           "background": "#fffdf7",
           "background_gradient": "",
-          "text": "#fffdf7",
+          "text": "#121212",
           "button": "#560503",
-          "button_label": "#000000",
-          "secondary_button_label": "#faf5e8",
+          "button_label": "#fffdf7",
+          "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
       },
